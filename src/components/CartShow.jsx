@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function CartShow({isCartOpen, setIsCartOpen}) {
+export default function CartShow() {
   return (
-    <div className=''>
-        asfsadfa
+    <div className='h-screen bg-green-50 shadow-2xl'>
+        
     </div>
   )
 }

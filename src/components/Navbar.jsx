@@ -26,7 +26,6 @@ export default function Navbar() {
     if (isCartOpen === true) {
       window.addEventListener("click", handleClick);
     }
-    console.log(isCartOpen)
     return () => { window.removeEventListener("click", handleClick) }
   }, [isCartOpen]);
 
@@ -50,7 +49,7 @@ export default function Navbar() {
   return (
     <nav className={`z-40 fixed top-0 w-full ${scroll ? "bg-gray-50 shadow-lg" : "bg-transparent"} px-12 transition-all ease-in duration-300`}>
       <div className='relative max-w-7xl mx-auto py-2 flex items-center justify-between'>
-        
+
         {/* logo */}
         <div className='size-20 flex items-center'>
           <img className='' src={Logo} alt="logo" />
@@ -96,14 +95,11 @@ export default function Navbar() {
       </div>
 
       {/* Cart UI */}
-      <div ref={cartRef} className={`absolute grid h-screen top-0 z-50 w-[400px] bg-gray-400 transition-all duration-300 ${isCartOpen ? 'right-0' : '-right-full'
+      <div ref={cartRef} className={`absolute grid top-0 z-50 w-[400px] transition-all duration-300 ${isCartOpen ? 'right-0' : '-right-full'
         }`}>
         {isCartOpen && (
-          <div className=''>
-            <CartShow
-              isCartOpen={isCartOpen}
-              setIsCartOpen={setIsCartOpen}
-            />
+          <div>
+            <CartShow />
           </div>
         )}
       </div>
