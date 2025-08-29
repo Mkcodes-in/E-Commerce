@@ -41,7 +41,7 @@ export default function Products() {
   console.log(products)
   console.log(activeHeart)
   return (
-    <section className='z-30 max-w-7xl mx-auto'>
+    <section className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4'>
       {loader ? (<div className='grid h-screen place-content-center items-center'>
         <div className='flex flex-col items-center'>
           <TbLoader2 className='animate-spin' size={28} stroke='green' />
