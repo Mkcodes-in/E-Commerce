@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
-import { CgShoppingCart } from 'react-icons/cg';
+import { CgViewComfortable } from 'react-icons/cg';
 import { TbLoader2 } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
@@ -71,7 +71,6 @@ export default function Products() {
               {/* Product Image */}
               <div className='relative overflow-hidden h-56 bg-gray-100'>
                 <img
-                  onClick={() => navigate(`/product/${item.id}`)}
                   src={item.thumbnail}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform ease-in duration-500 group-hover:scale-105 cursor-pointer"
@@ -100,9 +99,11 @@ export default function Products() {
                   {item.stock} in stock
                 </div>
                 {/* Cart Button */}
-                <button className="w-full py-2.5 bg-blue-600 text-white rounded cursor-pointer transition-colors duration-500 px-4 hover:bg-blue-700 font-medium flex items-center justify-center gap-4">
-                  <CgShoppingCart size={18} />
-                  Add to Cart
+                <button
+                  onClick={() => navigate(`/product/${item.id}`)}
+                  className="w-full py-2.5 bg-blue-600 text-white rounded cursor-pointer transition-colors duration-500 px-4 hover:bg-blue-700 font-medium flex items-center justify-center gap-4">
+                  <CgViewComfortable size={18} />
+                  View Details
                 </button>
               </div>
             </div>

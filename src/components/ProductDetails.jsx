@@ -1,13 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TbLoader2 } from 'react-icons/tb';
-import { BsStarHalf, BsStarFill, BsStar, BsShieldCheck, BsArrowRepeat, BsTruck } from 'react-icons/bs';
+import { BsStarHalf, BsStarFill, BsStar, BsShieldCheck, BsArrowRepeat, BsTruck, BsArrowLeft } from 'react-icons/bs';
+import CustomerReview from './CustomerReview';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-
+  const navigate = useNavigate();
+  console.log(navigate)
+  // star logic
   const proRating = (rating) => {
     const star = [];
     for (let i = 1; i <= 5; i++) {
@@ -21,7 +24,8 @@ export default function ProductDetails() {
     }
     return star;
   }
-
+  
+  // fetching data from api
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`)
       .then(res => setProduct(res.data));
@@ -34,6 +38,11 @@ export default function ProductDetails() {
 
   return (
     <div className="py-26 max-w-7xl mx-auto px-8 sm:px-6 md:px-4">
+      <button 
+      onClick={() => {navigate(-1)}}
+      className='flex items-center gap-3 my-4 cursor-pointer text-sm hover:text-gray-800 transition-colors ease-in duration-300'>
+        <BsArrowLeft /> Back to Products
+      </button>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Product images */}
         <div className="space-y-4">
@@ -122,6 +131,10 @@ export default function ProductDetails() {
         </div>
       </div>
       {/* Customer Reviews */}
+      <CustomerReview 
+      product={product}
+      proRating={proRating}
+      />
     </div>
   );
 }
