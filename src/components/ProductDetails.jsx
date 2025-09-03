@@ -4,6 +4,10 @@ import axios from 'axios';
 import { TbLoader2 } from 'react-icons/tb';
 import { BsStarHalf, BsStarFill, BsStar, BsShieldCheck, BsArrowRepeat, BsTruck, BsArrowLeft } from 'react-icons/bs';
 import CustomerReview from './CustomerReview';
+import { CgShoppingCart } from 'react-icons/cg';
+import { GiEnergyArrow } from 'react-icons/gi';
+import { GoZap } from 'react-icons/go';
+import ProductImg from './ProductImg';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -24,34 +28,41 @@ export default function ProductDetails() {
     }
     return star;
   }
-  
+
   // fetching data from api
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`)
       .then(res => setProduct(res.data));
   }, [id]);
 
-  if (!product) return <div className='flex flex-col items-center'>
+  if (!product) return <div className='flex flex-col items-center py-70'>
     <TbLoader2 className='animate-spin' size={28} stroke='green' />
     <p className='text-gray-600 mt-2'>Loading Products...</p>
   </div>;
 
   return (
     <div className="py-26 max-w-7xl mx-auto px-8 sm:px-6 md:px-4">
-      <button 
-      onClick={() => {navigate(-1)}}
-      className='flex items-center gap-3 my-4 cursor-pointer text-sm hover:text-gray-800 transition-colors ease-in duration-300'>
+      <button
+        onClick={() => { navigate(-1) }}
+        className='flex items-center gap-3 my-4 cursor-pointer text-sm hover:text-gray-800 transition-colors ease-in duration-300'>
         <BsArrowLeft /> Back to Products
       </button>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Product images */}
         <div className="space-y-4">
-          <div className='relative rounded-2xl overflow-hidden bg-gray-100 h-96'>
-            <img
-              src={product.thumbnail}
-              alt={product.title}
-              className='w-full h-full object-contain'
-            />
+          <ProductImg
+            product={product}
+          />
+          {/* Add To Cart Button */}
+          <div className='flex items-center justify-between gap-4'>
+            <button className='flex items-center justify-center gap-2 w-full text-md py-4 px-6 bg-orange-500 rounded text-white cursor-pointer'>
+              <GoZap />
+              Buy Now
+            </button>
+            <button className='flex items-center justify-center gap-2 text-md py-4 px-6 bg-amber-500 rounded text-white w-full cursor-pointer'>
+              <CgShoppingCart />
+              Add to cart
+            </button>
           </div>
         </div>
         {/* Product Details */}
@@ -131,9 +142,9 @@ export default function ProductDetails() {
         </div>
       </div>
       {/* Customer Reviews */}
-      <CustomerReview 
-      product={product}
-      proRating={proRating}
+      <CustomerReview
+        product={product}
+        proRating={proRating}
       />
     </div>
   );
