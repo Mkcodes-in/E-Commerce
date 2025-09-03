@@ -5,7 +5,6 @@ import { TbLoader2 } from 'react-icons/tb';
 import { BsStarHalf, BsStarFill, BsStar, BsShieldCheck, BsArrowRepeat, BsTruck, BsArrowLeft } from 'react-icons/bs';
 import CustomerReview from './CustomerReview';
 import { CgShoppingCart } from 'react-icons/cg';
-import { GiEnergyArrow } from 'react-icons/gi';
 import { GoZap } from 'react-icons/go';
 import ProductImg from './ProductImg';
 
@@ -37,7 +36,7 @@ export default function ProductDetails() {
 
   if (!product) return <div className='flex flex-col items-center py-70'>
     <TbLoader2 className='animate-spin' size={28} stroke='green' />
-    <p className='text-gray-600 mt-2'>Loading Products...</p>
+    <p className='text-gray-600 mt-2'>Loading Products Details...</p>
   </div>;
 
   return (

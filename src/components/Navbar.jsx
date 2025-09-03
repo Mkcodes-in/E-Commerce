@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import '../App.css'
 import Logo from '../assets/Logo.png'
 import NavItem from '../Data/NavItem'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { BiHeart, BiSearch } from 'react-icons/bi'
 import { CgShoppingCart } from 'react-icons/cg'
 import CartShow from './CartShow'
@@ -59,7 +59,9 @@ export default function Navbar() {
         <div className='flex items-center gap-4'>
           {NavItem.map((item) => (
             <div key={item}>
-              <Link to={`/${item}`}>{item}</Link>
+              <NavLink 
+              className={({isActive}) => isActive ? "text-green-700 font-bold" : ""}
+              to={`/${item}`}>{item}</NavLink>
             </div>
           ))}
         </div>
