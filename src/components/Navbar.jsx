@@ -2,32 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import '../App.css'
 import Logo from '../assets/Logo.png'
 import NavItem from '../Data/NavItem'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { BiHeart, BiSearch } from 'react-icons/bi'
 import { CgShoppingCart } from 'react-icons/cg'
-import CartShow from './CartShow'
+import { UseCart } from '../context/UseCart'
 
 export default function Navbar() {
   const [scroll, setScroll] = useState(false);
   const searchRef = useRef(null);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const cartRef = useRef(null);
-
-  function handleCart() {
-    setIsCartOpen(!isCartOpen);
-  }
-
-  useEffect(() => {
-    function handleClick(e) {
-      if (cartRef.current && !cartRef.current.contains(e.target)) {
-        setIsCartOpen(false);
-      }
-    }
-    if (isCartOpen === true) {
-      window.addEventListener("click", handleClick);
-    }
-    return () => { window.removeEventListener("click", handleClick) }
-  }, [isCartOpen]);
+  const navigate = useNavigate();
+  const { cartItems } = UseCart();
 
   function handleRef() {
     searchRef.current.focus();
@@ -59,9 +43,9 @@ export default function Navbar() {
         <div className='flex items-center gap-4'>
           {NavItem.map((item) => (
             <div key={item}>
-              <NavLink 
-              className={({isActive}) => isActive ? "text-green-700 font-bold" : ""}
-              to={`/${item}`}>{item}</NavLink>
+              <NavLink
+                className={({ isActive }) => isActive ? "text-green-700 font-bold" : ""}
+                to={`/${item}`}>{item}</NavLink>
             </div>
           ))}
         </div>
@@ -76,7 +60,9 @@ export default function Navbar() {
           </div>
 
           {/* Heart Icon */}
-          <button className="relative inline-block cursor-pointer">
+          <button 
+          onClick={() => navigate(`/favorite`)}
+          className="relative inline-block cursor-pointer">
             <BiHeart size={24} />
             <span className="absolute -top-2 -right-2 bg-green-900/80 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">1
             </span>
@@ -84,27 +70,15 @@ export default function Navbar() {
 
           {/* Cart Icon */}
           <button
-            onClick={(e) => {
-              e.stopPropagation(); // Prevent window click handler
-              handleCart();
-            }}
+            onClick={() => navigate(`/cart`)}
             className='relative inline-block cursor-pointer'
           >
             <CgShoppingCart size={24} />
-            <span className='absolute h-5 w-5 bg-green-900/80 rounded-full text-white text-xs flex items-center justify-center -top-2 -right-2'>1</span>
+            <span className='absolute h-5 w-5 bg-green-900/80 rounded-full text-white text-xs flex items-center justify-center -top-2 -right-2'>{cartItems.length}</span>
           </button>
         </div>
       </div>
 
-      {/* Cart UI */}
-      <div ref={cartRef} className={`absolute grid top-0 z-50 w-[400px] transition-all duration-300 ${isCartOpen ? 'right-0' : '-right-full'
-        }`}>
-        {isCartOpen && (
-          <div>
-            <CartShow />
-          </div>
-        )}
-      </div>
     </nav>
   )
 }

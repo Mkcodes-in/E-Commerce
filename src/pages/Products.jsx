@@ -6,7 +6,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
 
-  const Base_Url = "https://dummyjson.com/products";
+  const Base_Url = "https://dummyjson.com/products";  
   useEffect(() => {
     async function fetchData() {
       setLoader(true);
@@ -23,7 +23,6 @@ export default function Products() {
     fetchData();
   }, []);
 
-  console.log(products)
   return (
     <div>
       <Card 

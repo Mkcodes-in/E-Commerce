@@ -7,12 +7,14 @@ import CustomerReview from './CustomerReview';
 import { CgShoppingCart } from 'react-icons/cg';
 import { GoZap } from 'react-icons/go';
 import ProductImg from './ProductImg';
+import { UseCart } from '../context/UseCart';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
-  console.log(navigate)
+  const { addToCart } = UseCart();
+
   // star logic
   const proRating = (rating) => {
     const star = [];
@@ -58,7 +60,7 @@ export default function ProductDetails() {
               <GoZap />
               Buy Now
             </button>
-            <button className='flex items-center justify-center gap-2 text-md py-4 px-6 bg-amber-500 rounded text-white w-full cursor-pointer'>
+            <button onClick={() => addToCart(product)} className='flex items-center justify-center gap-2 text-md py-4 px-6 bg-amber-500 rounded text-white w-full cursor-pointer'>
               <CgShoppingCart />
               Add to cart
             </button>

@@ -13,7 +13,7 @@ export default function ProductImg({ product }) {
             setImage(image - 1);
         }
     }
-    console.log(product.setImage);
+
     return (
         <div className='relative rounded-2xl overflow-hidden bg-gray-100 h-96'>
             <img

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { TbLoader2 } from 'react-icons/tb';
 import { Link, useNavigate } from 'react-router-dom';
+import CategoryFetch from '../components/CategoryFetch';
 
 export default function Category() {
     const [catData, setCatData] = useState([]);
@@ -23,7 +24,8 @@ export default function Category() {
         }
         fetchCategory();
     }, []);
-    console.log(catData)
+
+    // console.log(catData)
     return (
         <section className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4'>
             {loader ? (
@@ -37,9 +39,9 @@ export default function Category() {
                 <div className='py-28'>
                     {catData.map(item => (
                         <Link
-                        className='flex cursor-pointer' 
-                        key={item} 
-                        onClick={() => navigate(`/Category/${catData}`)}>
+                            className='flex cursor-pointer'
+                            key={item}
+                            to={`/categories/${item}`}>
                             {item}
                         </Link>
                     ))}

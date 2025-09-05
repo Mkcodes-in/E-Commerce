@@ -8,6 +8,9 @@ import Contact from './pages/Contact'
 import ProductDetails from './components/ProductDetails'
 import ErrorPage from './pages/ErrorPage'
 import Category from './pages/Category'
+import CategoryFetch from './components/CategoryFetch'
+import CartShow from './components/CartShow'
+import FavoriteItem from './components/FavoriteItem'
 
 export default function App() {
   return (
@@ -17,11 +20,14 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
         <Route path='/Categories' element={<Category />}/>
+        <Route path='/Categories/:category' element={<CategoryFetch />}/>
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/product/:id' element={<ProductDetails />} />
+        <Route path='/cart' element={<CartShow />}/>
+        <Route path='/favorite' element={<FavoriteItem />} />
         <Route path='*' element={<ErrorPage />}/>
       </Routes>
     </div>
-  )
+  ) 
 }
