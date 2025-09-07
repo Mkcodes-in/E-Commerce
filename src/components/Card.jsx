@@ -49,7 +49,7 @@ export default function Card({ products, loader }) {
                             {/* Product Image */}
                             <div className='relative overflow-hidden h-56 bg-gray-100'>
                                 <img
-                                    src={item.thumbnail}
+                                    src={item.thumbnail || item.image}
                                     alt={item.title}
                                     className="w-full h-full object-cover transition-transform ease-in duration-500 group-hover:scale-105 cursor-pointer"
                                 />
@@ -69,13 +69,13 @@ export default function Card({ products, loader }) {
                                 <div className="flex items-center justify-between mb-3">
                                     <span className="text-green-600 font-bold text-xl">₹{item.price}</span>
                                     <span className="text-yellow-500 font-semibold text-sm">
-                                        ⭐ {item.rating}
+                                        ⭐ {item.rating ? item.rating.rate : 0}
                                     </span>
                                 </div>
                                 {/* Product Stock */}
-                                <div className='bg-gray-600/20 text-xs text-gray-600 inline-block py-1 px-2 rounded-full mb-3'>
+                                {item.stock && (<div className='bg-gray-600/20 text-xs text-gray-600 inline-block py-1 px-2 rounded-full mb-3'>
                                     {item.stock} in stock
-                                </div>
+                                </div>)}
                                 {/* Cart Button */}
                                 <button
                                     onClick={() => navigate(`/product/${item.id}`)}
