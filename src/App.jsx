@@ -11,6 +11,7 @@ import Category from './pages/Category'
 import CategoryFetch from './components/CategoryFetch'
 import CartShow from './components/CartShow'
 import FavoriteItem from './components/FavoriteItem'
+import CategoryDetails from './components/CategoryDetails'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/Categories' element={<Category />}/>
         <Route path='/Categories/:category' element={<CategoryFetch />}/>
+        <Route path='/Categories/:category/:id' element={<CategoryDetails />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/product/:id' element={<ProductDetails />} />

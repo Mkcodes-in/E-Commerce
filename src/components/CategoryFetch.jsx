@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { BsArrowLeft } from 'react-icons/bs';
 import { TbLoader2 } from 'react-icons/tb';
 import { useNavigate, useParams } from 'react-router-dom';
-import Card from './Card';
+import CategoryCart from './CategoryCart';
 
 export default function CategoryFetch() {
     const [categoryData, setCategoryData] = useState([]);
@@ -29,7 +29,7 @@ export default function CategoryFetch() {
     }, [category]);
     console.log(categoryData)
     return (
-        <section className={`z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4 ${loader ? "" : "py-26"}`}>
+        <section className={`z-30 max-w-7xl mx-auto sm:px-6 md:px-4 ${loader ? "" : "py-26"}`}>
             {loader ? (<div className='grid h-screen place-content-center items-center'>
                 <div className='flex flex-col items-center'>
                     <TbLoader2 className='animate-spin' size={28} stroke='green' />
@@ -39,10 +39,10 @@ export default function CategoryFetch() {
                 (<div>
                      <button
                             onClick={() => { navigate(-1) }}
-                            className='flex items-center gap-3 my-4 cursor-pointer text-sm hover:text-gray-800 transition-colors ease-in duration-300'>
+                            className='flex items-center gap-3 my-4 cursor-pointer text-sm hover:text-gray-800 transition-colors ease-in duration-300 ml-4'>
                             <BsArrowLeft /> Back to Products
                         </button>
-                    <Card products={categoryData} loader={loader}/>
+                    <CategoryCart category={categoryData}/>
                 </div>
                 )}
         </section>

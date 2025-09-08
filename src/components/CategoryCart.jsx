@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { BsEyeFill, BsHeart, BsHeartFill } from 'react-icons/bs';
-import { TbLoader2 } from 'react-icons/tb';
+import React, { useState } from 'react'
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
+import { CgViewComfortable } from 'react-icons/cg';
+import { TbLoader2 } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom';
 
-export default function Card({ products, loader }) {
+export default function CategoryCart({ category, loader }) {
     const [activeHeart, setActiveHeart] = useState([]);
     const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ export default function Card({ products, loader }) {
         })
     }
     return (
-        <section className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4'>
+        <section className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4 py-26'>
             {loader ? (<div className='grid h-screen place-content-center items-center'>
                 <div className='flex flex-col items-center'>
                     <TbLoader2 className='animate-spin' size={28} stroke='green' />
@@ -26,8 +27,8 @@ export default function Card({ products, loader }) {
                 </div>
             </div>)
                 :
-                (<div className="z-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-26">
-                    {products.map((item) => (
+                (<div className="z-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {category.map((item) => (
                         <div
                             key={item.id}
                             className="relative bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
@@ -62,7 +63,7 @@ export default function Card({ products, loader }) {
                             {/* Product Info */}
                             <div className="p-4">
                                 <h3
-                                    onClick={() => navigate(`/product/${item.id}`)}
+                                    onClick={() => navigate(`/categories/${category}/${item.id}`)}
                                     className="text-lg font-semibold cursor-pointer line-clamp-1 hover:text-blue-600 transition-colors">{item.title}</h3>
                                 <p className="text-gray-600 mb-2 line-clamp-2">{item.description}</p>
                                 <div className="flex items-center justify-between mb-3">
@@ -77,9 +78,9 @@ export default function Card({ products, loader }) {
                                 </div>)}
                                 {/* Cart Button */}
                                 <button
-                                    onClick={() => navigate(`/product/${item.id}`)}
+                                    onClick={() => navigate(`/categories/${category}/${item.id}`)}
                                     className="w-full py-2.5 bg-blue-600 text-white rounded cursor-pointer transition-colors duration-500 px-4 hover:bg-blue-700 font-medium flex items-center justify-center gap-4">
-                                    <BsEyeFill size={18} />
+                                    <CgViewComfortable size={18} />
                                     View Details
                                 </button>
                             </div>
