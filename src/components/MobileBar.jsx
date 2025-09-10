@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function MobileBar({NavItem}) {
   return (
-    <div className='block sm:hidden fixed bottom-0 left-0 right-0 py-3 bg-white w-full shadow-2xl border-t border-gray-100 rounded-t-2xl'>
+    <div className='block sm:hidden fixed bottom-0 left-0 right-0 py-3 bg-white w-full shadow-2xl border-t border-gray-100 rounded-t-2xl z-50'>
       <div className='flex justify-around items-center px-2'>
         {NavItem.map(item => {
           const Icon = item.icon;
