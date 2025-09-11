@@ -13,7 +13,6 @@ export default function CartShow() {
         <button
           className='flex items-center justify-center gap-3 mb-2 cursor-pointer'
           onClick={() => navigate(-1)}><BsArrowLeft /> Continue Shopping</button>
-        <h1 className="text-3xl font-light text-center flex-1 border-b pb-4 border-gray-500/50">Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🛒</div>

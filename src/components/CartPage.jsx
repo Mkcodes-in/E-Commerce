@@ -6,39 +6,67 @@ export default function CartPage() {
     const { cartItems, decreaseQuantity, addToCart } = UseCart();
 
     return (
-        <section className="max-w-6xl mx-auto px-4 py-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2">
-                    {/* Header */}
-                    <div className="hidden md:grid grid-cols-12 gap-4 bg-gray-50 rounded-xl px-6 py-4 shadow-sm mb-4">
-                        <div className="col-span-5 text-gray-600 font-medium">Product</div>
-                        <div className="col-span-2 text-gray-600 font-medium text-center">Price</div>
-                        <div className="col-span-3 text-gray-600 font-medium text-center">Quantity</div>
-                        <div className="col-span-2 text-gray-600 font-medium text-center">Total</div>
+        <section className='max-w-7xl mx-auto py-8'>
+            <h1 className='text-3xl font-bold text-gray-900 mb-8'>Shopping Cart</h1>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                <div className='lg:col-span-2'>
+                    {/* Cart Header */}
+                    <div className='hidden md:grid grid-cols-12 py-3 px-4 font-medium bg-gray-50 rounded-lg shadow-md mb-4'>
+                        <div className='col-span-5'>Product</div>
+                        <div className='col-span-2 text-center'>Price</div>
+                        <div className='col-span-3 text-center'>Quantity</div>
+                        <div className='col-span-2 text-center'>Total</div>
                     </div>
-                    {/* Cart Item */}
-                    <div className=''>
+                    {/* Cart Items */}
+                    <div className='space-y-4'>
                         {cartItems.map(item => (
-                            <div key={item.id}>
-                                <div className="md:col-span-5 flex items-center">
-                                    <img
-                                        src={item.thumbnail}
-                                        alt={item.title}
-                                        className="w-16 h-16 object-contain rounded-lg bg-gray-100 p-2"
-                                    />
-                                    <div className="ml-4">
-                                        <h3 className="font-medium text-gray-900">{item.title}</h3>
-                                        <p className="text-sm text-gray-500">{item.category}</p>
+                            <div 
+                            className='grid grid-cols-12 gap-4 items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100'
+                            key={item.title}>
+                                {/* Image with title and category */}
+                                <div className='col-span-12 md:col-span-5 flex items-center'>
+                                    <img 
+                                    className='p-2 h-16 w-16 object-contain bg-gray-100 rounded-lg'
+                                    src={item.thumbnail} 
+                                    alt={item.title} />
+                                    <div className='ml-4'>
+                                        <h3 className='font-medium text-gray-900'>{item.title}</h3>
+                                        <p className='text-sm text-gray-500 capitalize'>{item.category}</p>
                                     </div>
-                                
+                                </div>
+                                {/* Price */}
+                                <div className='col-span-4 md:col-span-2 flex items-center justify-center md:justify-center'>
+                                    {/* <span className='md:hidden text-gray-600 font-medium'>Price:</span> */}
+                                    <span className='text-lg font-semibold text-green-600'>₹{item.price}</span>
+                                </div>  
+                                {/* Quantity */}
+                                <div className='col-span-4 md:col-span-3 flex items-center justify-center md:justify-center'>
+                                    <div className='flex items-center gap-2'>
+                                        {/* <span className='md:hidden text-gray-600 font-medium'>Qty:</span> */}
+                                        <button 
+                                        onClick={() => decreaseQuantity(item.id)}
+                                        className=' rounded-md  hover:text-gray-100 cursor-pointer'>
+                                            <BiMinus className='h-4 w-4'/>
+                                        </button>
+                                        <span className='px-2 font-medium'>
+                                            {item.quantity}
+                                        </span>
+                                        <button 
+                                        onClick={() => addToCart(item)}
+                                        className=' rounded-md  hover:text-gray-100 cursor-pointer'>
+                                            <BiPlus className='h-4 w-4'/>
+                                        </button>
+                                    </div>
+                                </div>
+                                {/* Total */}
+                                <div className='col-span-4 md:col-span-2 flex items-center justify-center md:justify-center'>
+                                    {/* <span className='font-medium text-shadow-gray-400 md:hidden'>Total:</span> */}
+                                    <span className='text-lg font-medium text-blue-600'>₹{(item.price * item.quantity).toFixed(2)}</span>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
-            <div>
-                {/* total amount with discount btn  */}
             </div>
         </section>
     )

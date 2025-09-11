@@ -56,11 +56,11 @@ export default function ProductDetails() {
           />
           {/* Add To Cart Button */}
           <div className='flex items-center justify-between gap-4'>
-            <button className='flex items-center justify-center gap-2 w-full text-md py-4 px-6 bg-orange-500 rounded text-white cursor-pointer'>
+            <button className='flex items-center justify-center gap-2 w-full text-md py-4 px-3 bg-orange-500 rounded text-white cursor-pointer'>
               <GoZap />
               Buy Now
             </button>
-            <button onClick={() => addToCart(product)} className='flex items-center justify-center gap-2 text-md py-4 px-6 bg-amber-500 rounded text-white w-full cursor-pointer'>
+            <button onClick={() => addToCart(product)} className='flex items-center justify-center gap-2 text-md py-4 px-3 bg-amber-500 rounded text-white w-full cursor-pointer'>
               <CgShoppingCart />
               Add to cart
             </button>
