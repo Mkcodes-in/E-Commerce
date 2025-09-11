@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CustomerReview({proRating, product}) {
+export default function CustomerReview({ proRating, product }) {
     return (
         <div>
             {product.reviews && product.reviews.length > 0 && (
@@ -10,10 +10,12 @@ export default function CustomerReview({proRating, product}) {
                         {product.reviews.map((review, index) => (
                             <div key={index} className="bg-gray-50 p-6 rounded-xl">
                                 <div className="flex items-center mb-4">
-                                    <div className="flex mr-3">
-                                        {proRating(review.rating)}
+                                    <div className="flex flex-col mr-3">
+                                        <div className="font-medium text-gray-900">{review.reviewerName}</div>
+                                        <div className='flex gap-1 mt-1'>
+                                            {proRating(review.rating)}
+                                        </div>
                                     </div>
-                                    <span className="font-medium text-gray-900">{review.reviewerName}</span>
                                     <span className="ml-auto text-sm text-gray-500">{new Date(review.date).toLocaleDateString()}</span>
                                 </div>
                                 <p className="text-gray-700">{review.comment}</p>

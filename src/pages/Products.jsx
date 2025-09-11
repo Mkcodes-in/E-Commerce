@@ -11,7 +11,6 @@ export default function Products() {
     async function fetchData() {
       setLoader(true);
       try {
-        await new Promise(resolve => setTimeout(resolve, 1000));
         const { data } = await axios.get(Base_Url);
         setProducts(data.products);
       } catch (error) {

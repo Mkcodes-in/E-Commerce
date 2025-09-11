@@ -68,7 +68,7 @@ export default function Card({ products, loader }) {
                                 <div className="flex items-center justify-between mb-3">
                                     <span className="text-green-600 font-bold text-xl">₹{item.price}</span>
                                     <span className="text-yellow-500 font-semibold text-sm">
-                                        ⭐ {item.rating ? item.rating.rate : 0}
+                                        ⭐ {item.rating}
                                     </span>
                                 </div>
                                 {/* Product Stock */}
