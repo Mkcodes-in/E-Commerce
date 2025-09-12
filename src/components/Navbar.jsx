@@ -7,12 +7,14 @@ import { BiHeart, BiSearch } from 'react-icons/bi'
 import { CgShoppingCart } from 'react-icons/cg'
 import { UseCart } from '../context/UseCart'
 import MobileBar from './MobileBar'
+import UseWishlist from '../context/UseWishlist'
 
 export default function Navbar() {
   const [scroll, setScroll] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
   const navigate = useNavigate();
+  const { activeHeart } = UseWishlist();
   const { cartItems } = UseCart();
 
   function handleSearch() {
@@ -79,12 +81,12 @@ export default function Navbar() {
             </div>
           )}
 
-          {/* Heart Icon */}
+          {/* Wishlist Icon */}
           <button
             onClick={() => navigate(`/favorite`)}
             className="relative inline-block cursor-pointer">
             <BiHeart size={24} />
-            <span className="absolute -top-2 -right-2 bg-green-900/80 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">1
+            <span className="absolute -top-2 -right-2 bg-green-900/80 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">{activeHeart.length}
             </span>
           </button>
 

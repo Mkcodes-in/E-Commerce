@@ -21,7 +21,7 @@ export default function CartShow() {
             <p className="text-gray-600 mb-6">Looks like you haven't added any items to your cart yet.</p>
             <button 
             onClick={() => navigate(`/products`)}
-            className="px-6 py-3 bg-gradient-to-l to-green-300 from-green-600 text-white rounded hover:bg-green-700 font-medium cursor-pointer">
+            className="px-6 py-3 bg-gradient-to-l to-green-300 from-green-600 text-white rounded hover:bg-green-700 font-medium cursor-pointer shadow-lg">
               Start Shopping
             </button>
           </div>

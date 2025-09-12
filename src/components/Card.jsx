@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BsEyeFill, BsHeart, BsHeartFill } from 'react-icons/bs';
 import { TbLoader2 } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
+import UseWishlist from '../context/UseWishlist';
 
 export default function Card({ products, loader }) {
-    const [activeHeart, setActiveHeart] = useState([]);
+    const { activeHeart, handleHeart } = UseWishlist();
     const navigate = useNavigate();
 
-    function handleHeart(id, e) {
-        e.stopPropagation();
-        setActiveHeart(prev => {
-            if (prev.includes(id)) {
-                return prev.filter(itemId => itemId !== id)
-            } else {
-                return [...prev, id];
-            }
-        })
-    }
     return (
         <section className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4'>
             {loader ? (<div className='grid h-screen place-content-center items-center'>
@@ -34,12 +25,12 @@ export default function Card({ products, loader }) {
                         >
                             {/* Favorite Button */}
                             <button
-                                onClick={(e) => handleHeart(item.id, e)}
-                                className={`absolute top-2 right-2 z-30 rounded-full backdrop-blur-sm transition-all duration-300 cursor-pointer p-2 ${activeHeart.includes(item.id)
+                                onClick={() => handleHeart(item)}
+                                className={`absolute top-2 right-2 z-30 rounded-full backdrop-blur-sm transition-all duration-300 cursor-pointer p-2 ${activeHeart.find((i) => i.id === item.id)
                                     ? 'bg-red-500/20 text-red-600'
                                     : 'bg-white/70 text-gray-500 hover:bg-white'
                                     }`}>
-                                {activeHeart.includes(item.id) ? (
+                                {activeHeart.find(i => i.id === item.id) ? (
                                     <BsHeartFill size={18} className="text-red-500" />
                                 ) : (
                                     <BsHeart size={18} />

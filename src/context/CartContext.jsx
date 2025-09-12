@@ -4,7 +4,7 @@ export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
-    console.log(cartItems)
+
     // add to cart logic
     const addToCart = (item) => {
         // check product already have in cart or not?

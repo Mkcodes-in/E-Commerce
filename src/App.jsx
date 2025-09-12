@@ -10,7 +10,7 @@ import ErrorPage from './pages/ErrorPage'
 import Category from './pages/Category'
 import CategoryFetch from './components/CategoryFetch'
 import CartShow from './components/CartShow'
-import FavoriteItem from './components/FavoriteItem'
+import FavoriteItem from './components/WishlistCart'
 import CategoryDetails from './components/CategoryDetails'
 
 export default function App() {
