@@ -4,7 +4,7 @@ export const WishlistContext = createContext();
 
 export default function WishlistProvider({ children }) {
     const [activeHeart, setActiveHeart] = useState([]);
-    console.log(activeHeart)
+    
     function handleHeart(item) {
         const existItem = activeHeart.find(itm => itm.id === item.id);
 

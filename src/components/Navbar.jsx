@@ -8,11 +8,12 @@ import { CgShoppingCart } from 'react-icons/cg'
 import { UseCart } from '../context/UseCart'
 import MobileBar from './MobileBar'
 import UseWishlist from '../context/UseWishlist'
+import SearchProduct from './SearchProduct'
 
 export default function Navbar() {
   const [scroll, setScroll] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const searchRef = useRef(null);
+  const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
   const { activeHeart } = UseWishlist();
   const { cartItems } = UseCart();
@@ -20,11 +21,6 @@ export default function Navbar() {
   function handleSearch() {
     setShowSearch(!showSearch);
   }
-
-  function handleRef() {
-    searchRef.current.focus();
-  }
-
   useEffect(() => {
     function handleScroll() {
       if (window.scrollY > 10) {
@@ -60,26 +56,23 @@ export default function Navbar() {
 
         {/* Search Bar */}
         <div className='relative flex items-center gap-4'>
-          <div className='hidden lg:block'>
-            <span onClick={handleRef} className='absolute cursor-pointer left-1 top-[3px] p-2 bg-green-900/80 rounded-full'><BiSearch size={18} color='white' /></span>
-            <input ref={searchRef} className='bg-gray-400/20 rounded-full outline-none pl-12 px-2 py-2 focus:ring-3 focus:bg-transparent ring-gray-500/20 transition-all ease-in duration-300'
-              placeholder='Search products...'
-              type="text" />
-          </div>
+
+          <SearchProduct
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+
           {/* Search Icon */}
           <button
             onClick={handleSearch}
             className='flex lg:hidden cursor-pointer'>
             <BiSearch size={24} />
           </button>
-          {showSearch && (
-            <div className='absolute top-16 right-16'>
-              <span onClick={handleRef} className='absolute cursor-pointer left-1 top-[3px] p-2 bg-green-900/80 rounded-full'><BiSearch size={18} color='white' /></span>
-              <input ref={searchRef} className='bg-gray-400/20 rounded-full outline-none pl-12 px-2 py-2 focus:ring-3 focus:bg-transparent ring-gray-500/20 transition-all ease-in duration-300'
-                placeholder='Search products...'
-                type="text" />
-            </div>
-          )}
+          
+          {showSearch && <SearchProduct
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />}
 
           {/* Wishlist Icon */}
           <button
