@@ -53,6 +53,7 @@ export default function SearchProduct({ searchValue, setSearchValue }) {
                     {findedProduct.map((item) => (
                         <Link
                         to={`/product/${item.id}`}
+                        onClick={() => setSearchValue("")}
                         key={item.id}
                         className='px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center justify-start gap-2'>
                             <img
