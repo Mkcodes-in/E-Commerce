@@ -8,10 +8,10 @@ export default function WishlistCart() {
   const { activeHeart } = UseWishlist();
   const navigate = useNavigate();
   return (
-<div className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4'>
+<div className='z-30 max-w-7xl mx-auto sm:px-6 md:px-4'>
       <div className="z-20 gap-6 py-26">
         <button
-           className='flex items-center justify-center gap-3 mb-2 cursor-pointer'
+           className='flex items-center justify-center gap-3 mb-2 cursor-pointer px-8'
           onClick={() => navigate(-1)}><BsArrowLeft /> Continue Shopping</button>
         {
           activeHeart.length === 0 ? (
