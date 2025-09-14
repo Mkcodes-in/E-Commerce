@@ -117,7 +117,7 @@ export default function ProductDetails() {
               <p className="font-medium">{product.sku || 'N/A'}</p>
             </div>
           </div>
-          <div className="border-t pt-6 space-y-4">
+          <div className="border-t border-gray-300 pt-6 space-y-4">
             <div className="flex items-center text-gray-600">
               <BsTruck className="mr-3 text-blue-500" size={20} />
               <div>

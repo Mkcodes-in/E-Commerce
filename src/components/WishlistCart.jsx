@@ -8,14 +8,14 @@ export default function WishlistCart() {
   const { activeHeart } = UseWishlist();
   const navigate = useNavigate();
   return (
-    <div className='z-30 max-w-7xl mx-auto sm:px-6 md:px-4'>
+<div className='z-30 max-w-7xl mx-auto px-8 sm:px-6 md:px-4'>
       <div className="z-20 gap-6 py-26">
         <button
-          className='flex items-center justify-center gap-3 mb-2 cursor-pointer'
+           className='flex items-center justify-center gap-3 mb-2 cursor-pointer'
           onClick={() => navigate(-1)}><BsArrowLeft /> Continue Shopping</button>
         {
           activeHeart.length === 0 ? (
-            <div className="text-center py-22">
+            <div className="text-center py-24">
               <div className="text-6xl mb-4 flex items-center justify-center"><BsHeart /></div>
               <h2 className="text-2xl font-semibold text-gray-800 mb-2">Your Wishlist is empty</h2>
               <p className="text-gray-600 mb-6">Looks like you haven't added any items to your wishlist yet.</p>

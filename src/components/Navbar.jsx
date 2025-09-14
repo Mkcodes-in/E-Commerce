@@ -72,7 +72,7 @@ export default function Navbar() {
           </button>
 
           {showSearch && (
-            <div className='fixed inset-0 z-[99] bg-white h-[15vh] '>
+            <div className='fixed inset-0 z-[99] bg-white h-[13vh] '>
               <div className='flex items-center gap-4 justify-center sm:justify-end p-7'>
                 <SearchProduct
                 searchValue={searchValue}
