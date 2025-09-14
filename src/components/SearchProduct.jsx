@@ -28,14 +28,12 @@ export default function SearchProduct({ searchValue, setSearchValue }) {
 
         return () => clearTimeout(searchDebounce);
     }, [searchValue, products]);
-    console.log(findedProduct)
 
     return (
         <div className='relative'>
             {/* Search */}
             <form
-                onSubmit={handleSumbit}
-                className='hidden lg:block'>
+                onSubmit={handleSumbit}>
                 <span
                     onClick={handleRef}
                     className='absolute cursor-pointer left-1 top-[3px] p-2 bg-green-900/80 rounded-full'><BiSearch size={18} color='white' /></span>
